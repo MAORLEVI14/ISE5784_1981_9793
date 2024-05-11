@@ -1,9 +1,13 @@
 package primitives;
+
 import static primitives.Util.alignZero;
+
 public class Vector extends Point {
 
     public Vector(double x, double y, double z) {
         super(x, y, z);
+        if (xyz.equals(Double3.ZERO))
+            throw new IllegalArgumentException("Vector cannot be zero");
     }
 
     public Vector(Double3 xyz) {
@@ -15,47 +19,54 @@ public class Vector extends Point {
 
     @Override
     public String toString() {
-        return "Vector{"  + xyz + '}';
+        return "Vector{" + xyz + '}';
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if(!(obj instanceof Vector vector)) return false;
+        if (!(obj instanceof Vector vector)) return false;
         return xyz.equals(vector.xyz);
     }
-    public Vector add(Vector vector){
+
+    public Vector add(Vector vector) {
         return new Vector(xyz.add(vector.xyz));
     }
-    public Vector scale(double scale){
+
+    public Vector scale(double scale) {
         return new Vector(xyz.scale(scale));
     }
-    public double dotProduct(Vector vector){
-        return xyz.d1*vector.xyz.d1+xyz.d2*vector.xyz.d2+xyz.d3*vector.xyz.d3;
+
+    public double dotProduct(Vector vector) {
+        return this.xyz.d1 * vector.xyz.d1 + this.xyz.d2 * vector.xyz.d2 + this.xyz.d3 * vector.xyz.d3;
     }
-    public Vector crossProduct(Vector vector){
+
+    public Vector crossProduct(Vector vector) {
         return new Vector(
-                xyz.d2*vector.xyz.d3-xyz.d3*vector.xyz.d2,
-                xyz.d3*vector.xyz.d1-xyz.d1*vector.xyz.d3,
-                xyz.d1*vector.xyz.d2-xyz.d2*vector.xyz.d1
+                this.xyz.d2 * vector.xyz.d3 - this.xyz.d3 * vector.xyz.d2,
+                vector.xyz.d1 * this.xyz.d3 - vector.xyz.d3 * this.xyz.d1,
+                this.xyz.d1 * vector.xyz.d2 - this.xyz.d2 * vector.xyz.d1
         );
     }
-    public double lengthSquared(){
-        return xyz.d1*xyz.d1+xyz.d2*xyz.d2+xyz.d3*xyz.d3;
+
+    public double lengthSquared() {
+        return xyz.d1 * xyz.d1 + xyz.d2 * xyz.d2 + xyz.d3 * xyz.d3;
     }
+
     //normalization
-    public Vector normalize(){
-        double length=alignZero(length());
-        if(length==0){
+    public Vector normalize() {
+        double length = alignZero(length());
+        if (length == 0) {
             throw new IllegalArgumentException("Cannot normalize the zero vector");
         }
-        return new Vector(xyz.scale(1/length));
+        return new Vector(xyz.scale(1 / length));
     }
-    public double length(){
+
+    public double length() {
         return Math.sqrt(lengthSquared());
     }
 
-    public Vector subtract(Vector vector){
+    public Vector subtract(Vector vector) {
         return new Vector(xyz.subtract(vector.xyz));
     }
 }
