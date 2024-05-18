@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="185b8109-aa76-42da-b6c3-6b2d38a40fb4" name="Changes" comment="i add something">
-      <change afterPath="$PROJECT_DIR$/src/test/junit_jupiter.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unittests/CylinderTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unittests/GeometryTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unittests/PlaneTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unittests/PointTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unittests/PolygonTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unittests/RadialGeometryTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unittests/RayTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unittests/SphereTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unittests/TriangleTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unittests/TubeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unittests/UtilTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unittests/VectorTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISE5784_1981_9793.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ISE5784_1981_9793.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="185b8109-aa76-42da-b6c3-6b2d38a40fb4" name="Changes" comment="we start stage 2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,7 +72,7 @@
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "70f46328",
+    "git-widget-placeholder": "cd30655c",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
@@ -137,7 +120,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1715463483779</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL‎-00004" summary="we start stage 2">
+      <option name="closed" value="true" />
+      <created>1716064418420</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL‎-00004" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1716064418420</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,6 +178,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="i finish part 1" />
     <MESSAGE value="i add something" />
-    <option name="LAST_COMMIT_MESSAGE" value="i add something" />
+    <MESSAGE value="we start stage 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="we start stage 2" />
   </component>
 </project>
