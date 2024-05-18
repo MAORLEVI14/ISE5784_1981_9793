@@ -4,8 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="185b8109-aa76-42da-b6c3-6b2d38a40fb4" name="Changes" comment="i finish part 1">
+    <list default="true" id="185b8109-aa76-42da-b6c3-6b2d38a40fb4" name="Changes" comment="i add something">
+      <change afterPath="$PROJECT_DIR$/src/test/junit_jupiter.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/unittests/CylinderTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/unittests/GeometryTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/unittests/PlaneTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/unittests/PointTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/unittests/PolygonTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/unittests/RadialGeometryTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/unittests/RayTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/unittests/SphereTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/unittests/TriangleTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/unittests/TubeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/unittests/UtilTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/unittests/VectorTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISE5784_1981_9793.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ISE5784_1981_9793.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,9 +84,16 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "3060272c",
+    "git-widget-placeholder": "70f46328",
     "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.idesettings.emmet"
   }
 }]]></component>
@@ -107,7 +129,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1715462140739</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL‎-00003" summary="i add something">
+      <option name="closed" value="true" />
+      <created>1715463483779</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL‎-00003" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1715463483779</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -156,17 +186,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="i finish part 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="i finish part 1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/Main.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="i add something" />
+    <option name="LAST_COMMIT_MESSAGE" value="i add something" />
   </component>
 </project>
