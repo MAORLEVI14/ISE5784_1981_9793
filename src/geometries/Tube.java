@@ -8,4 +8,7 @@ public class Tube {
     Vector getNormal(Point point) {
         return null;
     }
+    public Tube(Ray axis, double radius) {
+        this.axis = axis;
+    }
 }

@@ -14,6 +14,7 @@ public class Plane {
      */
     public Plane(Point myq, Vector myNormal) {
         this.q = myq;
+
         this.normal = myNormal.normalize();
     }
 
@@ -24,8 +25,10 @@ public class Plane {
      * @param point3 point number 3
      */
     public Plane (Point point1,Point point2,Point point3){
-        normal=null;
-        q=point1;
+        this.q=point1;
+        Vector v1=point2.subtract(point1);
+        Vector v2 =point3.subtract(point1);
+        this.normal=v1.crossProduct(v2).normalize();
     }
 
     /**

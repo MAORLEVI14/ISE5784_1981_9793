@@ -9,7 +9,9 @@ public class Triangle extends Polygon {
      * @param b=point
      * @param c=point
      */
+
     public Triangle(Point a, Point b, Point c) {
         super(a,b,c);
     }
+
 }

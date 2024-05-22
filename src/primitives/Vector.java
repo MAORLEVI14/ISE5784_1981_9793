@@ -1,16 +1,16 @@
 package primitives;
 
 import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 public class Vector extends Point {
 
     public Vector(double x, double y, double z) {
-        super(x, y, z);
-        if (xyz.equals(Double3.ZERO))
-            throw new IllegalArgumentException("Vector cannot be zero");
+        this(new Double3(x,y,z));
+
     }
 
-    public Vector(Double3 xyz) {
+    public  Vector(Double3 xyz) {
         super(xyz);
         if (xyz.equals(Double3.ZERO)) {
             throw new IllegalArgumentException("Vector cannot be zero");
@@ -34,6 +34,9 @@ public class Vector extends Point {
     }
 
     public Vector scale(double scale) {
+        if (isZero(scale)){
+            throw new IllegalArgumentException("Cannot scale the zero vector");
+        }
         return new Vector(xyz.scale(scale));
     }
 
@@ -42,6 +45,10 @@ public class Vector extends Point {
     }
 
     public Vector crossProduct(Vector vector) {
+        //check if the vectors are parallel
+        if (this.equals(vector) || this.equals(vector.scale(-1))) {
+            throw new IllegalArgumentException("Cross-Product of parallel vectors is not possible");
+        }
         return new Vector(
                 this.xyz.d2 * vector.xyz.d3 - this.xyz.d3 * vector.xyz.d2,
                 vector.xyz.d1 * this.xyz.d3 - vector.xyz.d3 * this.xyz.d1,
