@@ -1,7 +1,11 @@
 package geometries;
 
+import primitives.Point;
+import primitives.Vector;
+
 public abstract class RadialGeometry implements Geometry{
-    protected double radius;
+
+    final protected double radius;
 
     /**
      * parameters construcrtor
@@ -9,5 +13,10 @@ public abstract class RadialGeometry implements Geometry{
      */
     public RadialGeometry(double myRadius) {
         this.radius = myRadius;
+    }
+
+    @Override
+    public Vector getNormal(Point p) {
+        return null;
     }
 }

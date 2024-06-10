@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package primitives;
 
@@ -49,9 +49,9 @@ public class Double3 {
    public boolean equals(Object obj) {
       if (this == obj) return true;
       return (obj instanceof Double3 other)
-            && isZero(d1 - other.d1)
-            && isZero(d2 - other.d2)
-            && isZero(d3 - other.d3);
+              && isZero(d1 - other.d1)
+              && isZero(d2 - other.d2)
+              && isZero(d3 - other.d3);
    }
 
    @Override
@@ -66,7 +66,9 @@ public class Double3 {
     * @param  rhs right hand side operand for addition
     * @return     result of add
     */
-   public Double3 add(Double3 rhs) { return new Double3(d1 + rhs.d1, d2 + rhs.d2, d3 + rhs.d3); }
+   public Double3 add(Double3 rhs) {
+
+      return new Double3(d1 + rhs.d1, d2 + rhs.d2, d3 + rhs.d3); }
 
    /**
     * Subtract two floating point triads into a new triad where each couple of
@@ -74,7 +76,8 @@ public class Double3 {
     * @param  rhs right hand side operand for addition
     * @return     result of add
     */
-   public Double3 subtract(Double3 rhs) { return new Double3(d1 - rhs.d1, d2 - rhs.d2, d3 - rhs.d3); }
+   public Double3 subtract(Double3 rhs) {
+      return new Double3(d1 - rhs.d1, d2 - rhs.d2, d3 - rhs.d3); }
 
    /**
     * Scale (multiply) floating point triad by a number into a new triad where
@@ -83,7 +86,9 @@ public class Double3 {
     * @param  rhs right hand side operand for scaling
     * @return     result of scale
     */
-   public Double3 scale(double rhs) { return new Double3(d1 * rhs, d2 * rhs, d3 * rhs); }
+   public Double3 scale(double rhs) {
+      return new Double3(d1 * rhs, d2 * rhs, d3 * rhs);
+   }
 
    /**
     * Reduce (divide) floating point triad by a number into a new triad where each

@@ -1,10 +1,10 @@
 package test;
-//maor levi 328301981 amiel ditshi 214129793
 import static java.lang.System.out;
 
 import static primitives.Util.isZero;
-
 import primitives.*;
+
+
 
 /**
  * Test program for the 1st stage
@@ -20,6 +20,7 @@ public final class Main {
       Point  p1         = new Point(1, 2, 3);
       Point  p2         = new Point(2, 4, 6);
       Point  p3         = new Point(2, 4, 5);
+
       Vector v1         = new Vector(1, 2, 3);
       Vector v1Opposite = new Vector(-1, -2, -3);
       Vector v2         = new Vector(-2, -4, -6);
@@ -50,7 +51,7 @@ public final class Main {
       // Add vector to point
       if (!(p1.add(v1).equals(p2)))
          out.println("ERROR: (point + vector) = other point does not work correctly");
-      if (!(p1.add(v1Opposite).equals(Point.ZERO)))
+      if (!(p1.add(v1Opposite).equals(new Point(0,0,0))))
          out.println("ERROR: (point + vector) = center of coordinates does not work correctly");
 
       // distances

@@ -4,114 +4,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="185b8109-aa76-42da-b6c3-6b2d38a40fb4" name="Changes" comment="we start stage 2">
-      <change afterPath="$PROJECT_DIR$/javadocumentation/RadialGeometry.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/allclasses-index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/allpackages-index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/copy.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/element-list" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/geometries/Cylinder.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/geometries/Geometry.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/geometries/Plane.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/geometries/Polygon.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/geometries/PolygonTests.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/geometries/RadialGeometry.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/geometries/Sphere.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/geometries/Triangle.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/geometries/Tube.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/geometries/package-summary.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/geometries/package-tree.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/help-doc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-10.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-11.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-12.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-13.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-14.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-15.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-16.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-17.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-18.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-4.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-5.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-6.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-7.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-8.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index-files/index-9.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/legal/COPYRIGHT" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/legal/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/legal/jquery.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/legal/jqueryUI.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/link.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/member-search-index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/module-search-index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/overview-summary.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/overview-tree.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/package-search-index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/package-summary.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/package-tree.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/primitives/Double3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/primitives/Point.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/primitives/Ray.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/primitives/Util.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/primitives/Vector.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/primitives/package-summary.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/primitives/package-tree.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/resources/glass.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/resources/x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/script-dir/jquery-3.6.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/script-dir/jquery-ui.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/script-dir/jquery-ui.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/search-page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/stylesheet.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/tag-search-index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/test/Main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/test/package-summary.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/test/package-tree.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/type-search-index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/unittests/CylinderTests.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/unittests/GeometryTests.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/unittests/PlaneTest.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/unittests/PointTests.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/unittests/PolygonTests.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/unittests/RadialGeometryTests.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/unittests/RayTests.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/unittests/SphereTests.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/unittests/TriangleTests.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/unittests/TubeTest.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/unittests/UtilTests.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/unittests/VectorTests.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/unittests/package-summary.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javadocumentation/unittests/package-tree.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/apiguardian-api-1.1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-5.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-api-5.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-engine-5.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-params-5.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-platform-commons-1.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-platform-engine-1.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/opentest4j-1.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unitTests/geometries/PolygonTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unitTests/geometries/SphereTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unitTests/primitives/PointTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unitTests/primitives/VectorTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="185b8109-aa76-42da-b6c3-6b2d38a40fb4" name="Changes" comment="I start the test for class if you can continue please">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/geometries/CylinderTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/geometries/GeometriesTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/geometries/PlaneTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/geometries/RadialGeometryTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/geometries/TriangleTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/geometries/TubeTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/primitives/RayTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISE5784_1981_9793.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ISE5784_1981_9793.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RadialGeometry.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Geometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Double3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Double3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/primitives/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/primitives/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unittests/CylinderTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unittests/GeometryTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unittests/PlaneTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unittests/PointTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unittests/PolygonTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unittests/RadialGeometryTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unittests/RayTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unittests/SphereTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unittests/TriangleTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unittests/TubeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unittests/UtilTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unittests/VectorTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTests/geometries/PolygonTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/geometries/PolygonTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTests/geometries/SphereTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/geometries/SphereTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTests/primitives/PointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/primitives/PointTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTests/primitives/VectorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/primitives/VectorTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,9 +123,10 @@
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "7fe037b8",
+    "git-widget-placeholder": "94127f29",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
@@ -301,7 +236,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1716064873629</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL‎-00006" summary="I start the test for class if you can continue please">
+      <option name="closed" value="true" />
+      <created>1716398274947</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL‎-00006" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1716398274948</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -352,6 +295,7 @@
     <MESSAGE value="i finish part 1" />
     <MESSAGE value="i add something" />
     <MESSAGE value="we start stage 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="we start stage 2" />
+    <MESSAGE value="I start the test for class if you can continue please" />
+    <option name="LAST_COMMIT_MESSAGE" value="I start the test for class if you can continue please" />
   </component>
 </project>

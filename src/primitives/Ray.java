@@ -1,34 +1,87 @@
 package primitives;
+import java.util.List;
 
-import java.util.Objects;
+import static primitives.Util.*;
 
-public class Ray
-{
-    private final Double3 head;
-    private final Vector _dir;
+public class Ray {
+    private final Point head;
+    private final Vector direction;
 
-    public Ray(Double3 head, Vector dir) {
+
+    /**
+     *parameters constructor
+     * @param head=point
+     * @param direction=vector
+     */
+    public Ray(Point head, Vector direction) {
         this.head = head;
-        _dir = dir;
-    }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Ray ray = (Ray) o;
-        return head.equals(ray.head) && _dir.equals(ray._dir);
+        this.direction = direction.normalize(); // Assuming normalize() method normalizes the vector
     }
 
-    @Override
-    public String toString() {
-        return "Ray{" +
-                head +
-                _dir +
-                '}';
+    /**
+     *
+     * @return head
+     */
+    public Point getHead() {
+        return head;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(head, _dir);
+    /**
+     *
+     * @return direction
+     */
+    public Vector getDirection() {
+        return direction;
     }
+
+    /**
+     * @param obj=point
+     * @return If two points are equal
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Ray) {
+            if(head.xyz==((Ray) obj).head.xyz){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return A string representing the vector class
+     */
+    public String tostring(){
+        return "Ray{"+
+                "head='"+head+
+                "direction'"+direction+
+                "}";
+
+    }
+
+
+    /**
+     *get Point at specific distance in the ray's direction
+     *
+     * @param t is a distance for reaching new Point
+     * @return new {@link Point}
+     */
+    /*public Point getPoint(double t) {
+        if(isZero(t)){
+            throw new IllegalArgumentException("t is equal to 0 produce an illegal ZERO vector");
+        }
+
+        return head.add(direction.scale(t));
+    }*/
+    public Point getPoint(double t) {
+        if (isZero(t)) {
+            // אם המרחק הוא 0, יש להחזיר את נקודת ההתחלה עצמה
+            return head;
+        }
+
+        return head.add(direction.scale(t));
+    }
+
+
 }
+

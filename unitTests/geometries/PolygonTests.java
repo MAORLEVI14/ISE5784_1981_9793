@@ -1,13 +1,14 @@
 package geometries;
 
-import org.junit.jupiter.api.Test;
-import primitives.*;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import primitives.Point;
+import primitives.Vector;
 
 /**
  * Testing Polygons
- *
  * @author Dan
  */
 public class PolygonTests {
@@ -17,9 +18,7 @@ public class PolygonTests {
      */
     private final double DELTA = 0.000001;
 
-    /**
-     * Test method for {@link geometries.Polygon#Polygon(primitives.Point...)}.
-     */
+    /** Test method for {@link geometries.Polygon#Polygon(primitives.Point...)}. */
     @Test
     public void testConstructor() {
         // ============ Equivalence Partitions Tests ==============
@@ -66,17 +65,14 @@ public class PolygonTests {
                 "Constructed a polygon with vertice on a side");
 
     }
-
-    /**
-     * Test method for {@link geometries.Polygon#getNormal(primitives.Point)}.
-     */
+    /** Test method for {@link geometries.Polygon#getNormal(primitives.Point)}  */
     @Test
     public void testGetNormal() {
         // ============ Equivalence Partitions Tests ==============
-        // TC01: There is a simple single test here - using a quad
-        Point[] pts =
-                {new Point(0, 0, 1), new Point(1, 0, 0), new Point(0, 1, 0), new Point(-1, 1, 1)};
-        Polygon pol = new Polygon(pts);
+        // TC01: basic test: using a quad
+        Point[] points =
+                { new Point(0, 0, 1), new Point(1, 0, 0), new Point(0, 1, 0), new Point(-1, 1, 1) };
+        Polygon pol = new Polygon(points);
         // ensure there are no exceptions
         assertDoesNotThrow(() -> pol.getNormal(new Point(0, 0, 1)), "");
         // generate the test result
@@ -85,8 +81,10 @@ public class PolygonTests {
         assertEquals(1, result.length(), DELTA, "Polygon's normal is not a unit vector");
         // ensure the result is orthogonal to all the edges
         for (int i = 0; i < 3; ++i)
-            assertEquals(0d, result.dotProduct(pts[i].subtract(pts[i == 0 ? 3 : i - 1])), DELTA,
+            assertEquals(0d, result.dotProduct(points[i].subtract(points[i == 0 ? 3 : i - 1])), DELTA,
                     "Polygon's normal is not orthogonal to one of the edges");
     }
+
+
 
 }

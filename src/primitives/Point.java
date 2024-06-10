@@ -1,43 +1,84 @@
 package primitives;
 
 public class Point {
-    public static final Point ZERO = new Point(0,0,0);
-    final Double3 xyz;
 
-    public Point(double x, double y, double z) {
-        xyz = new Double3(x, y, z);
-    }
-    Point(Double3 xyz) {
-        this.xyz = xyz;
+    protected final Double3 xyz;
+    public static double ZERO;
+    /**
+     * parameters constructor
+     * @param MyXyz=xyz
+     */
+    public Point(Double3 MyXyz) {
+        this.xyz = MyXyz;
     }
 
+    /**
+     * A parameter constructor that accepts three numbers and creates a dot
+     * @param i=xyx.d1
+     * @param i1=xyz.d2
+     * @param i2=xyz.d3
+     */
+    public Point(double i, double i1, double i2) {
+        this.xyz = new Double3(i,i1,i2);
+    }
+
+    /**
+     * @param obj=point
+     * @return If two points are equal
+     */
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if(!(obj instanceof Point point)) return false;
-        return xyz.equals(point.xyz);
+        return (obj instanceof Point other) && this.xyz.equals(other.xyz);
     }
-    public int hashCode() { return xyz.hashCode(); }
+
+    /**
+     * @return A string representing the point class
+     */
     @Override
     public String toString() {
-        return "Point{" + xyz + '}';
-    }
-    //distanceSquared
-    public double distanceSquared(Point point) {
-        double dx = xyz.d1 - point.xyz.d1;
-        double dy = xyz.d2 - point.xyz.d2;
-        double dz = xyz.d3 - point.xyz.d3;
-        return dx * dx + dy * dy + dz * dz;
-    }
-    //distance
-    public double distance(Point point) {
-        return Math.sqrt(distanceSquared(point));
-    }
-    public Vector subtract(Point point){
-        return new Vector(xyz.subtract(point.xyz));
-    }
-    public Point add(Vector vector){
-        return new Point(xyz.add(vector.xyz));
+        return "Point"+"xyz="+xyz;
     }
 
+    /**
+     *Vector subtraction
+     * @param point1=Starting point of the vector
+     * @return vector between the two points
+     */
+    public Vector subtract(Point point1) {
+        double x=this.xyz.d1-point1.xyz.d1;
+        double y=this.xyz.d2-point1.xyz.d2;
+        double z=this.xyz.d3-point1.xyz.d3;
+        if(x==0 && y==0 && z==0) {
+            throw new IllegalArgumentException("vector is zero");
+        }
+        return new Vector(x,y,z);
+    }
 
+    /**
+     * @param point1=the point that we want to add
+     * @return new point after adding
+     */
+    public Point add(Point point1) {
+        return new Point(xyz.add(point1.xyz));
+    }
+
+    /**
+     * @param point1==the point that we want
+     * @return distance Squared between two points
+     */
+    public double distanceSquared(Point point1) {
+        double x=(this.xyz.d1-point1.xyz.d1);
+        double y=(this.xyz.d2-point1.xyz.d2);
+        double z=(this.xyz.d3-point1.xyz.d3);
+        return x*x+y*y+z*z;
+    }
+
+    /**
+     * @param point1==the point that we want
+     * @return distance between two points
+     */
+    public double distance(Point point1) {
+        return Math.sqrt(this.distanceSquared(point1));
+    }
 }
