@@ -3,7 +3,7 @@ package primitives;
 public class Point {
 
     protected final Double3 xyz;
-    public static double ZERO;
+    public static Point ZERO=new Point(0,0,0);
     /**
      * parameters constructor
      * @param MyXyz=xyz
