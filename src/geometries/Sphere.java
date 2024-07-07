@@ -60,6 +60,3 @@ public class Sphere extends RadialGeometry {
 
     }
 }
-
-
-

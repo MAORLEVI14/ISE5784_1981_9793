@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Unit tests for geometries.Cylinder class
  *
- * @author Yael Bouskila and Lital Amsalem
+ * @author maor and amiel
  */
 class CylinderTests {
 

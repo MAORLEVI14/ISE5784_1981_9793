@@ -24,8 +24,6 @@ public class Triangle extends Polygon {
      * @return a list of intersection points between the ray and the geometry
      */
     public List<Point> findIntsersections(Ray ray){
-
-
         // we take three vectors from the same starting point and connect them to the triangle's vertices
         // we get a pyramid
 
@@ -57,5 +55,3 @@ public class Triangle extends Polygon {
         return null;
     }
 }
-
-
