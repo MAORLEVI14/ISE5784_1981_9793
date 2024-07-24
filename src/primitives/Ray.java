@@ -66,22 +66,30 @@ public class Ray {
      * @param t is a distance for reaching new Point
      * @return new {@link Point}
      */
-    /*public Point getPoint(double t) {
-        if(isZero(t)){
-            throw new IllegalArgumentException("t is equal to 0 produce an illegal ZERO vector");
-        }
 
-        return head.add(direction.scale(t));
-    }*/
     public Point getPoint(double t) {
         if (isZero(t)) {
             // אם המרחק הוא 0, יש להחזיר את נקודת ההתחלה עצמה
             return head;
         }
-
         return head.add(direction.scale(t));
     }
+    public Point findClosestPoint(List<Point> pointList) {
+        Point closestPoint = null;
+        double minDistance = Double.MAX_VALUE;
+        double pointDistance; // the distance between the "this.p0" to each point in the list
 
+        if (!pointList.isEmpty()) {
+            for (var pointInList : pointList) {
+                pointDistance = this.head.distance(pointInList);
+                if (pointDistance < minDistance) {
+                    minDistance = pointDistance;
+                    closestPoint = pointInList;
+                }
+            }
+        }
+        return closestPoint;
+    }
 
 }
 

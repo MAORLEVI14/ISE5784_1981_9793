@@ -1,5 +1,6 @@
 package renderer;
 
+import primitives.Color;
 import primitives.Point;
 import primitives.Vector;
 import primitives.Ray;
@@ -12,7 +13,7 @@ import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 
-public class Camera implements Cloneable{
+public class Camera implements Cloneable {
 
     /**
      * starting position
@@ -26,18 +27,22 @@ public class Camera implements Cloneable{
     private Vector v_up;
     private Vector v_right;
 
-    private double width=0.0;
-    private double height=0.0;
-    private double distance=0.0;
+    private double width = 0.0;
+    private double height = 0.0;
+    private double distance = 0.0;
 
+    private ImageWriter imageWriter;
+    private RayTracerBase rayTracer;
 
     /**
      * constractor of camera
      */
-    private Camera(){}
+    private Camera() {
+    }
 
     /**
      * getter for Camera starting position.
+     *
      * @return Camera starting position.
      */
     public Point getP0() {
@@ -46,41 +51,46 @@ public class Camera implements Cloneable{
 
     /**
      * getter for Camera direction.
+     *
      * @return Camera direction.
      */
-    public Vector getV_t0(){
+    public Vector getV_t0() {
         return v_t0;
     }
 
     /**
      * getter for above the Camera.
+     *
      * @return above the Camera.
      */
-    public Vector getV_up(){
+    public Vector getV_up() {
         return v_up;
     }
 
     /**
      * getter for view plane height.
+     *
      * @return view plane height.
      */
-    public double getHeight(){
+    public double getHeight() {
         return height;
     }
 
     /**
      * getter for view plane width.
+     *
      * @return view plane width.
      */
-    public double getWidth(){
+    public double getWidth() {
         return width;
     }
 
     /**
      * getter for view plane distance.
+     *
      * @return view plane distance.
      */
-    public double getDistance(){
+    public double getDistance() {
         return distance;
     }
 
@@ -90,15 +100,15 @@ public class Camera implements Cloneable{
 
     public Ray constructRay(int nX, int nY, int j, int i) {
         Point pc = p0.add(v_t0.scale(distance));     // center of the view plane
-        double Ry = height/(double)nY;                      // Ratio - pixel height
-        double Rx = width/(double)nX;                       // Ratio - pixel width
+        double Ry = height / (double) nY;                      // Ratio - pixel height
+        double Rx = width / (double) nX;                       // Ratio - pixel width
 
-        double yJ = alignZero(-(i - ((double)nY - 1) / 2) * Ry);       // move pc Yi pixels
-        double xJ = alignZero((j - ((double)nX - 1) / 2) * Rx);        // move pc Xj pixels
+        double yJ = alignZero(-(i - ((double) nY - 1) / 2) * Ry);       // move pc Yi pixels
+        double xJ = alignZero((j - ((double) nX - 1) / 2) * Rx);        // move pc Xj pixels
 
         Point PIJ = pc;
-        if(!isZero(xJ))  PIJ = PIJ.add(v_right.scale(xJ));
-        if(!isZero(yJ))  PIJ = PIJ.add(v_up.scale(yJ));
+        if (!isZero(xJ)) PIJ = PIJ.add(v_right.scale(xJ));
+        if (!isZero(yJ)) PIJ = PIJ.add(v_up.scale(yJ));
 
         return new Ray(p0, PIJ.subtract(p0));
     }
@@ -115,7 +125,7 @@ public class Camera implements Cloneable{
     }
 
     /**
-     *  nested inner class
+     * nested inner class
      */
     public static class Builder {
         private final Camera camera = new Camera();
@@ -187,6 +197,16 @@ public class Camera implements Cloneable{
             return this;
         }
 
+        public Builder setImageWriter(ImageWriter imageWriter) {
+            camera.imageWriter = imageWriter;
+            return this;
+        }
+
+        public Builder setRayTracer(RayTracerBase rayTracer) {
+            camera.rayTracer = rayTracer;
+            return this;
+        }
+
         /**
          * Builds the Camera object.
          *
@@ -211,12 +231,55 @@ public class Camera implements Cloneable{
             if (camera.distance == 0.0) {
                 throw new MissingResourceException(missingData, Camera.class.getName(), "view plane distance");
             }
+            if (camera.imageWriter == null) {
+                throw new MissingResourceException(missingData, Camera.class.getName(), "imageWriter");
+            }
+            if (camera.rayTracer == null) {
+                throw new MissingResourceException(missingData, Camera.class.getName(), "ray Tracer");
+            }
 
             return (Camera) camera.clone();
         }
     }
 
+    public Camera renderImage() {
+        if (this.imageWriter == null)
+            throw new UnsupportedOperationException("Missing imageWriter");
+        if (this.rayTracer == null)
+            throw new UnsupportedOperationException("Missing rayTracerBase");
 
+        for (int i = 0; i < this.imageWriter.getNy(); i++) {
+            for (int j = 0; j < this.imageWriter.getNy(); j++) {
+                Color color = castRay(j,i);
+                this.imageWriter.writePixel(j, i, color);
+            }
+        }
+        return this;
+    }
+    private Color castRay(int j,int i){
+        Ray ray = constructRay(
+                this.imageWriter.getNx(),
+                this.imageWriter.getNy(),
+                j,
+                i);
+        return this.rayTracer.traceRay(ray);
+    }
+
+    public Camera printGrid(int interval, Color color) {
+        //=== running on the view plane===//
+        for (int i = 0; i < imageWriter.getNx(); i++) {
+            for (int j = 0; j < imageWriter.getNy(); j++) {
+                //=== create the net ===//
+                if (i % interval == 0 || j % interval == 0) {
+                    imageWriter.writePixel(i, j, color);
+                }
+            }
+        }
+        return this;
+    }
+    public void writeToImage() {
+        this.imageWriter.writeToImage();
+    }
 
 
 

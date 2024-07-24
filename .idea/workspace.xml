@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="185b8109-aa76-42da-b6c3-6b2d38a40fb4" name="Changes" comment="we finish stage 3">
+    <list default="true" id="185b8109-aa76-42da-b6c3-6b2d38a40fb4" name="Changes" comment="we finish stage 4">
+      <change afterPath="$PROJECT_DIR$/images/base render test.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/xml render test.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/geometries/CylinderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/geometries/CylinderTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/primitives/PointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/primitives/PointTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/renderer/CameraTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/renderer/IntegrationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTests/renderer/CameraTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/CameraTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +82,11 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "true",
+    "JUnit.CameraTest.executor": "Run",
+    "JUnit.CameraTests.executor": "Run",
+    "JUnit.IntegrationTests.executor": "Run",
     "JUnit.PolygonTests.executor": "Run",
+    "JUnit.RenderTests.executor": "Run",
     "JUnit.VectorTests.testCrossProduct.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -93,7 +95,8 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "b2b1ad3e",
+    "git-widget-placeholder": "1cb4deb6",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
@@ -116,7 +119,7 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.VectorTests.testCrossProduct">
+  <component name="RunManager">
     <configuration name="PolygonTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5784_1981_9793" />
       <extension name="coverage">
@@ -244,7 +247,23 @@
       <option name="project" value="LOCAL‎" />
       <updated>1720363310300</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL‎-00011" summary="we finish stage 3">
+      <option name="closed" value="true" />
+      <created>1720388248066</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL‎-00011" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1720388248067</updated>
+    </task>
+    <task id="LOCAL‎-00012" summary="we finish stage 4">
+      <option name="closed" value="true" />
+      <created>1720388462625</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL‎-00012" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1720388462625</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -304,6 +323,7 @@
     <MESSAGE value="we finish stage 2" />
     <MESSAGE value="we finish stage 3" />
     <MESSAGE value="we finish stage 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="we finish stage 3" />
+    <MESSAGE value="we finish stage 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="we finish stage 4" />
   </component>
 </project>
