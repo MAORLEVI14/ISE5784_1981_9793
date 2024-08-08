@@ -6,9 +6,10 @@ import primitives.Vector;
 import static primitives.Util.*;
 import java.util.List;
 
-public class Plane implements Geometry{
+public class Plane extends Geometry{
     Point q;
     Vector normal;
+
 
     /**
      * parameters constructors
@@ -48,35 +49,41 @@ public class Plane implements Geometry{
      * @param ray=Ray object type
      * @return a list of intersection points between the ray and the geometry
      */
-    public List<Point> findIntsersections(Ray ray){
-        Point p0=ray.getHead();
-        Vector v=ray.getDirection();
-        //הקרן על המישור
-        if (q.equals(p0))//if ray start on the plane but doesn't cut
-            return null;
+    @Override
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        Point P0 = ray.getHead(); // according to the illustration P0 is the same point of the ray's P0 (that's why the definition))
+        Vector v = ray.getDirection(); // according to the illustration v is the same vector of the ray's vector (that's why the definition))
 
-        Vector n=normal;//vector normal to plane
-        double nv=n.dotProduct(v);// the formula's denominator of "t" (t =(n*(Q-P0))/nv)
+        if (this.q.equals(P0)) { // if the ray starting from the plane it doesn't cut the plane at all
+            return null; // so return null
+        }
 
-        //if the ray is lying on the plane
-        if (isZero(nv))
-            return null;
+        Vector n = this.normal; // the normal to the plane
 
-        Vector q_p0= q.subtract(p0);
-        double nP0Q0= alignZero(n.dotProduct(q_p0));
+        double nv = n.dotProduct(v); // the formula's denominator of "t" (t =(n*(Q-P0))/nv)
 
-        // t should be bigger than 0
-        if(isZero(nP0Q0)){
+        // ray is lying on the plane axis
+        if (isZero(nv)) { // can't divide by zero (nv is the denominator)
             return null;
         }
 
-        double t =alignZero(nP0Q0 / nv);
+        Vector Q0_P0 = this.q.subtract(P0);
+        double nP0Q0 = alignZero(n.dotProduct(Q0_P0));
 
         // t should be bigger than 0
-        if(t<=0){
+        if (isZero(nP0Q0)) {
             return null;
         }
 
-        return List.of(ray.getPoint(t));
+        double t = alignZero(nP0Q0 / nv);
+
+        // t should be bigger than 0
+        if (t <= 0) {
+            return null;
+        }
+
+        // "this" - the specific geometry, "rey.getPoint(t)" - the point that the ray
+        // cross the geometry
+        return List.of(new GeoPoint(this, ray.getPoint(t)));
     }
 }

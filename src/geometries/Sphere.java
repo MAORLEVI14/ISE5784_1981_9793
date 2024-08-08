@@ -29,34 +29,50 @@ public class Sphere extends RadialGeometry {
      */
 
 
+
+
     @Override
-    public List<Point> findIntsersections(Ray ray) {
-        // if the ray starts at the center of the sphere
-        if (ray.getHead().equals(center)) {
-            return List.of(ray.getPoint(radius));
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        Point p0 = ray.getHead(); // ray's starting point
+        Point O = this.center; //the sphere's center point
+        Vector V = ray.getDirection(); // "the v vector" from the presentation
+
+        // if p0 on center, calculate with line parametric representation
+        // the direction vector normalized.
+        if (O.equals(p0)) {
+            Point newPoint = p0.add(ray.getDirection().scale(this.radius));
+            return List.of(new GeoPoint(this,newPoint));
         }
-        //check if there is intsersection between them
-        Vector v = center.subtract(ray.getHead());
 
-        double tm = alignZero(ray.getDirection().dotProduct(v));
+        Vector U = O.subtract(p0);
+        double tm = V.dotProduct(U);
+        double d = Math.sqrt(U.lengthSquared() - tm * tm);
+        if (d >= this.radius) {
+            return null;
+        }
 
-        //check if the ray is tangent to the sphere
-        double d = alignZero(Math.sqrt(v.lengthSquared() - tm * tm));
-        if (d >= radius) return null;
-        double th = alignZero(Math.sqrt(radius * radius - d * d));
-        double t1 = alignZero(tm - th);
-        double t2 = alignZero(tm + th);
+        double th = Math.sqrt(this.radius * this.radius - d * d);
+        double t1 = tm - th;
+        double t2 = tm + th;
+
         if (t1 > 0 && t2 > 0) {
-            return List.of(ray.getPoint(t1), ray.getPoint(t2));
+            Point p1 = ray.getPoint(t1);
+            Point p2 = ray.getPoint(t2);
+            return List.of(new GeoPoint(this,p1),new GeoPoint(this,p2));
         }
+
         if (t1 > 0) {
-            return List.of(ray.getPoint(t1));
+            Point p1 = ray.getPoint(t1);
+            return List.of(new GeoPoint(this,p1));
         }
+
         if (t2 > 0) {
-            return List.of(ray.getPoint(t2));
+            Point p2 = ray.getPoint(t2);
+            return List.of(new GeoPoint(this,p2));
         }
         return null;
-
-
     }
 }
+
+
+

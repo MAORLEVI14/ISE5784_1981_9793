@@ -24,11 +24,12 @@ class ImageWriterTests {
                 //=== create the net ===//
                 if (i % 50 == 0 || j % 50 == 0) {
                     imageWriter.writePixel(i, j, redColor);
-                }
-                else {
+                } else {
                     imageWriter.writePixel(i, j, yellowColor);
                 }
             }
         }
+        imageWriter.writeToImage();
     }
+
 }

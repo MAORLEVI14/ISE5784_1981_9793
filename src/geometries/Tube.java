@@ -9,6 +9,7 @@ import java.util.List;
 public class Tube extends RadialGeometry{
     Ray axis;
 
+
     /**
      *constractor
      * @param MyAxis=direction
@@ -37,7 +38,7 @@ public class Tube extends RadialGeometry{
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         return null;
     }
 }

@@ -1,5 +1,6 @@
 package renderer;
 
+import static java.awt.Color.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,9 +9,6 @@ import lighting.AmbientLight;
 import primitives.*;
 import renderer.*;
 import scene.Scene;
-import primitives.Vector;
-import static java.awt.Color.YELLOW;
-
 
 /** Test rendering a basic image
  * @author Dan */
@@ -26,15 +24,20 @@ public class RenderTests {
 
     /** Produce a scene with basic 3D model and render it into a png image with a
      * grid */
+
     @Test
     public void renderTwoColorTest() {
-        scene.geometries.add(new Sphere(new Point(0, 0, -100), 50d),
-                new Triangle(new Point(-100, 0, -100), new Point(0, 100, -100), new Point(-100, 100, -100)), // up
-                // left
-                new Triangle(new Point(-100, 0, -100), new Point(0, -100, -100),
-                        new Point(-100, -100, -100)), // down
-                // left
-                new Triangle(new Point(100, 0, -100), new Point(0, -100, -100), new Point(100, -100, -100))); // down
+        scene.geometries.add( //
+                new Sphere(new Point(0, 0, -100), 50).setEmission(new Color(RED)),
+                // up left
+                new Triangle(new Point(-100, 0, -100), new Point(0, 100, -100), new Point(-100, 100, -100))
+                        .setEmission(new Color(RED)),
+                // down left
+                new Triangle(new Point(-100, 0, -100), new Point(0, -100, -100), new Point(-100, -100, -100))
+                        .setEmission(new Color(RED)),
+                // down right
+                new Triangle(new Point(100, 0, -100), new Point(0, -100, -100), new Point(100, -100, -100))
+                        .setEmission(new Color(RED)));
         scene.setAmbientLight(new AmbientLight(new Color(255, 191, 191), Double3.ONE))
                 .setBackground(new Color(75, 127, 90));
 
@@ -46,6 +49,35 @@ public class RenderTests {
                 .printGrid(100, new Color(YELLOW))
                 .writeToImage();
     }
+    /**
+     * Produce a scene with basic 3D model - including individual lights of the
+     * bodies and render it into a png image with a grid
+     */
+    @Test
+    public void basicRenderMultiColorTest() {
+        scene.setAmbientLight(new AmbientLight(new Color(0, 0, 0), Double3.ONE))
+                .setBackground(new Color(BLACK));
+        scene.geometries.add( //
+                new Sphere(new Point(0, 0, -100), 50).setEmission(new Color(50,50,50)),
+                // up left
+                new Triangle(new Point(-100, 0, -100), new Point(0, 100, -100), new Point(-100, 100, -100))
+                        .setEmission(new Color(GREEN)),
+                // down left
+                new Triangle(new Point(-100, 0, -100), new Point(0, -100, -100), new Point(-100, -100, -100))
+                        .setEmission(new Color(RED)),
+                // down right
+                new Triangle(new Point(100, 0, -100), new Point(0, -100, -100), new Point(100, -100, -100))
+                        .setEmission(new Color(BLUE)));
+
+        camera
+                .setImageWriter(new ImageWriter("color render test", 1000, 1000))
+                .build()
+                .renderImage()
+                .printGrid(100, new Color(WHITE))
+                .writeToImage();
+    }
+
+
 
     /** Test for XML based scene - for bonus */
     @Test
@@ -59,7 +91,8 @@ public class RenderTests {
                 .setImageWriter(new ImageWriter("xml render test", 1000, 1000))
                 .build()
                 .renderImage()
-                .printGrid(100, new Color(255,255,0))
+                .printGrid(100, new Color(YELLOW))
                 .writeToImage();
     }
 }
+

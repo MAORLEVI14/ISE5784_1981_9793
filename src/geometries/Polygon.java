@@ -2,6 +2,7 @@ package geometries;
 
 import java.util.List;
 
+import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 import primitives.Point;
@@ -13,7 +14,7 @@ import primitives.Vector;
  * system
  * @author Dan
  */
-public class Polygon implements Geometry {
+public class Polygon extends Geometry {
     /** List of polygon's vertices */
     protected final List<Point> vertices;
     /** Associated plane in which the polygon lays */
@@ -84,7 +85,42 @@ public class Polygon implements Geometry {
     public Vector getNormal(Point point) { return plane.getNormal(); }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
-        return null;
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+
+        List<GeoPoint> intersections = plane.findGeoIntersections(ray);
+
+        // Check if the plane of the polygon intersects with the ray
+        // if there's no intersection with the plane - there's no intersection with the polygon.
+        if (intersections == null) {
+            return null;
+        }
+        Point p0 = ray.getHead();
+        Vector v = ray.getDirection();
+
+        Vector v1 = vertices.get(1).subtract(p0);
+        Vector v2 = vertices.get(0).subtract(p0);
+
+        double sign = v.dotProduct(v1.crossProduct(v2));
+
+        if (isZero(sign)) {
+            return null;
+        }
+        boolean positive = sign > 0;
+
+        for (int i = vertices.size() - 1; i > 0; --i) {
+            v1 = v2;
+            v2 = vertices.get(i).subtract(p0);
+            sign = alignZero(v.dotProduct(v1.crossProduct(v2)));
+
+            if (isZero(sign)){
+                return null;
+            }
+
+            if (positive != (sign > 0)) {
+                return null;
+            }
+        }
+
+        return List.of(new GeoPoint(this, intersections.get(0).point));
     }
 }
