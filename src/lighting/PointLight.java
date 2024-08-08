@@ -1,12 +1,16 @@
 package lighting;
 
 import primitives.Color;
+import primitives.Double3;
 import primitives.Point;
 import primitives.Vector;
 
 public class PointLight extends Light implements LightSource{
     private Point position; //The position point of the light source in the space
 
+    public double getDistance(Point point) {
+        return position.distance(point);
+    }
     /**
      * kC is The specular attenuation factor, required to ensure that the denominator in getIntensity > 1
      * kL is The light source attenuation factor
@@ -21,7 +25,7 @@ public class PointLight extends Light implements LightSource{
      *
      * @param intensity of the intensity of the source of the light
      */
-    protected PointLight(Color intensity, Point position) {
+    public PointLight(Color intensity, Point position) {
         super(intensity);
         this.position = position;
     }

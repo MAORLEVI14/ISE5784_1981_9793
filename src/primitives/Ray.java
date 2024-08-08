@@ -7,6 +7,7 @@ import static primitives.Util.*;
 public class Ray {
     private final Point head;
     private final Vector direction;
+    private static final double DELTA = 0.1;
 
 
     /**
@@ -18,6 +19,19 @@ public class Ray {
         this.head = head;
         this.direction = direction.normalize(); // Assuming normalize() method normalizes the vector
     }
+    /**
+     * Constructor to initialize ray
+     *
+     * @param p0  point of the ray
+     * @param n   normal vector
+     * @param dir direction vector of the ray
+     */
+    public Ray(Point p0, Vector dir, Vector n) {
+        double delta = dir.dotProduct(n) >= 0 ? DELTA : -DELTA;
+        this.head = p0.add(n.scale(delta));
+        this.direction = dir;
+    }
+
 
     /**
      *
@@ -87,7 +101,28 @@ public class Ray {
      * @param geoPointList list of intersections
      * @return {@link GeoPoint}
      */
+    /**public GeoPoint findClosestGeoPoint(List<GeoPoint> geoPointList) {
+
+     GeoPoint closestPoint = null;
+     double minDistance = Double.MAX_VALUE;
+     double geoPointDistance; // the distance between the "this.p0" to each point in the list
+
+     if (!geoPointList.isEmpty()) {
+     for (var geoPoint : geoPointList) {
+     geoPointDistance = this.head.distance(geoPoint.point);
+     if (geoPointDistance < minDistance) {
+     minDistance = geoPointDistance;
+     closestPoint = geoPoint;
+     }
+     }
+     }
+     return closestPoint;
+     }*/
     public GeoPoint findClosestGeoPoint(List<GeoPoint> geoPointList) {
+
+        if (geoPointList == null) {
+            return null;
+        }
 
         GeoPoint closestPoint = null;
         double minDistance = Double.MAX_VALUE;
@@ -104,6 +139,5 @@ public class Ray {
         }
         return closestPoint;
     }
-
 }
 

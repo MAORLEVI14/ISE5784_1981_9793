@@ -18,10 +18,19 @@ public class DirectionalLight extends Light implements LightSource{
     }
 
     /**
-     * Return the intensity light on specific point
+     * Return the intensity light on specific point222222222
      *
      * @param p the point on the object (Point3D)
-     * @return the intensity (Color)
+     * @re
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+    בבבבבבבבturn the intensity (Color)
      */
     @Override
     public Color getIntensity(Point p) {
@@ -37,5 +46,10 @@ public class DirectionalLight extends Light implements LightSource{
     @Override
     public Vector getL(Point p) {
         return this.direction.normalize();
+    }
+
+    @Override
+    public double getDistance(Point point) {
+        return Double.POSITIVE_INFINITY;
     }
 }
