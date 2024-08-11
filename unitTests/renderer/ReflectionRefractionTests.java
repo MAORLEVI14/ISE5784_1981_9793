@@ -226,6 +226,9 @@ public class ReflectionRefractionTests {
         ImageWriter imageWriter = new ImageWriter("blurryGlass2", 500, 500);
         camera.setImageWriter(imageWriter) //
                 .setRayTracer(new SimpleRayTracer(scene)) //
+                .setMultithreading(12)
+                .setNumberOfRays(17)
+                .setAdaptive(true)
                 .build() //
                 .renderImage()
                 .writeToImage();
@@ -237,6 +240,7 @@ public class ReflectionRefractionTests {
 
 
 }
+
 /**
  @Test
  public void drawHouseWithSunReflectionAndShadow() {
