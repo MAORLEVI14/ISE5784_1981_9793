@@ -1,5 +1,3 @@
-
-
 package renderer;
 
 import geometries.Intersectable;
@@ -37,7 +35,25 @@ public class SimpleRayTracer extends RayTracerBase {
         }
         return calcColor(point, ray);
     }
+    public Color average_color_calculator(List<Ray> rays) {
+        Color aver = Color.BLACK;
+        if (rays.size() == 0)
+            return aver;
 
+        for (Ray ray : rays) {
+            GeoPoint point = findClosestIntersection(ray);
+
+            // If no intersections are found, add the background color of the scene
+            if (point == null)
+                aver = aver.add(scene.background);
+            else {
+                Color c = calcColor(point, ray);
+                aver = aver.add(c);
+            }
+        }
+
+        return aver.reduce(rays.size());
+    }
     /**
      * Calculates the color of a point in the scene.
      *
@@ -89,23 +105,24 @@ public class SimpleRayTracer extends RayTracerBase {
         Ray reflectedRay = constructReflectedRay(gp.point, v, n, vn);
         Ray refractedRay = constructRefractedRay(gp.point, v, n);
         if (!kkr.lowerThan(MIN_CALC_COLOR_K)) {
-            color = color.add(calcGlobalEffect(reflectedRay, level - 1, kr, kkr));
+            color = color.add(calcGlobalEffect(material,reflectedRay, level - 1, kr, kkr));
         }
         Double3 kt = material.kT;
         Double3 kkt = k.product(kt);
         if (!kkt.lowerThan(MIN_CALC_COLOR_K)) {
-            color = color.add(calcGlobalEffect(refractedRay, level - 1, kt, kkt));
+            color = color.add(calcGlobalEffect(material,refractedRay, level - 1, kt, kkt));
         }
         return color;
     }
 
-    private Color calcGlobalEffect(Ray ray, int level, Double3 k, Double3 kx) {
+    private Color calcGlobalEffect(Material material,Ray ray, int level, Double3 k, Double3 kx) {
         Double3 kkx = k.product(kx);
         if (kkx.lowerThan(MIN_CALC_COLOR_K)) return Color.BLACK;
         GeoPoint gp = findClosestIntersection(ray);
-        return (gp == null ? scene.background.scale(kx) :
-                isZero( gp.geometry.getNormal(gp.point).dotProduct(ray.getDirection()) ) ? Color.BLACK
-                        : calcColor(gp, ray, level - 1, kkx).scale(k));
+        if (gp == null) return scene.background.scale(kx);
+        var rays = ray.generateBeam( gp.geometry.getNormal(gp.point),
+                material.blurGlassRadius, material.blurGlassDistance, material.numOfRays);
+        return calcAverageColor(rays, level-1, kkx).scale(k);
     }
 
 
@@ -113,7 +130,7 @@ public class SimpleRayTracer extends RayTracerBase {
      * get light and gp and move ao all the objects between them and calculate the
      * transparency
      *
-     * @param geopoint
+     * @param
      * @param light
      * @param l
      * @param n
@@ -257,6 +274,23 @@ public class SimpleRayTracer extends RayTracerBase {
     private GeoPoint findClosestIntersection(Ray ray) {
         return ray.findClosestGeoPoint(scene.geometries.findGeoIntersections(ray));
     }
+    /**
+     * get list of ray
+     *
+     * @param rays
+     * @param level
+     * @param kkx
+     * @return average color of the intersection of the rays
+     */
+    Color calcAverageColor(List<Ray> rays, int level, Double3 kkx) {
+        Color color = Color.BLACK;
 
+        for (Ray ray : rays) {
+            GeoPoint intersection = findClosestIntersection(ray);
+            color = color.add(intersection == null ? scene.background : calcColor(intersection, ray, level - 1, kkx));
+        }
+
+        return color.reduce(rays.size());
+    }
 
 }

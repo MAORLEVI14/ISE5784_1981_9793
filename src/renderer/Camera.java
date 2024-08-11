@@ -238,6 +238,7 @@ public class Camera implements Cloneable {
                 throw new MissingResourceException(missingData, Camera.class.getName(), "ray Tracer");
             }
 
+
             return (Camera) camera.clone();
         }
     }

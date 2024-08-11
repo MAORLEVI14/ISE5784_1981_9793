@@ -5,7 +5,9 @@ package renderer;
 
 import static java.awt.Color.*;
 
+import geometries.Plane;
 import geometries.Polygon;
+import lighting.DirectionalLight;
 import lighting.PointLight;
 import org.junit.jupiter.api.Test;
 
@@ -22,14 +24,20 @@ import scene.Scene;
  * (with transparency)
  * @author dzilb */
 public class ReflectionRefractionTests {
-    /** Scene for the tests */
-    private final Scene          scene         = new Scene("Test scene");
-    /** Camera builder for the tests with triangles */
+    /**
+     * Scene for the tests
+     */
+    private final Scene scene = new Scene("Test scene");
+    /**
+     * Camera builder for the tests with triangles
+     */
     private final Camera.Builder cameraBuilder = Camera.getBuilder()
-            .setDirection(new Vector(0,0,-1), new Vector(0,1,0))
+            .setDirection(new Vector(0, 0, -1), new Vector(0, 1, 0))
             .setRayTracer(new SimpleRayTracer(scene));
 
-    /** Produce a picture of a sphere lighted by a spot light */
+    /**
+     * Produce a picture of a sphere lighted by a spot light
+     */
     @Test
     public void twoSpheres() {
         scene.geometries.add(
@@ -51,7 +59,8 @@ public class ReflectionRefractionTests {
 
 
     /**
-     /** Produce a picture of a sphere lighted by a spot light */
+     * /** Produce a picture of a sphere lighted by a spot light
+     */
     @Test
     public void twoSpheresOnMirrors() {
         scene.geometries.add(
@@ -80,9 +89,11 @@ public class ReflectionRefractionTests {
                 .writeToImage();
     }
 
-    /** Produce a picture of a two triangles lighted by a spot light with a
+    /**
+     * Produce a picture of a two triangles lighted by a spot light with a
      * partially
-     * transparent Sphere producing partial shadow */
+     * transparent Sphere producing partial shadow
+     */
     @Test
     public void trianglesTransparentSphere() {
         scene.geometries.add(
@@ -105,6 +116,8 @@ public class ReflectionRefractionTests {
                 .renderImage()
                 .writeToImage();
     }
+
+
     /**
      * Produce a picture of five objects lighted by a spot light and point light
      * to show all the effects in one picture
@@ -114,7 +127,7 @@ public class ReflectionRefractionTests {
 
         this.scene.setAmbientLight(new AmbientLight(new Color(YELLOW), new Double3(0.15)));
 
-        this. scene.geometries.add( //
+        this.scene.geometries.add( //
                 new Triangle(new Point(-150, -150, -115),
                         new Point(150, -150, -135),
                         new Point(75, 75, -150)) //
@@ -170,89 +183,145 @@ public class ReflectionRefractionTests {
     }
 
     @Test
-    public void drawHouseWithSunReflectionAndShadow() {
-        Scene scene = new Scene("House with Sun Reflection and Shadow");
+    public void testBlurryGlass() {
 
-        // House body
-        scene.geometries.add(
-                new Polygon(
-                        new Point(-50, -50, 0),
-                        new Point(50, -50, 0),
-                        new Point(50, 0, 0),
-                        new Point(-50, 0, 0)
-                ).setEmission(new Color(150, 75, 0)) // Brown color
-                        .setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(30).setkR(0.5))
+        Vector vTo = new Vector(0, 1, 0);
+        Camera.Builder camera =Camera.getBuilder().setLocation(new Point(0,-230,0).add(vTo.scale(-13)))
+                .setDirection(vTo,new Vector(0,0,1))
+                .setVpSize(200d, 200).setVpDistance(1000);
+        ;
+
+        scene.setAmbientLight(new AmbientLight(new Color(gray).reduce(2), new Double3(0.15)));
+
+        for (int i = -4; i < 6; i += 2) {
+            scene.geometries.add(
+                    new Sphere(new Point(5 * i, -1.50, -3),3).setEmission(new Color(WHITE).reduce(4).reduce(2))
+                            .setMaterial(new Material().setkD(0.2).setkS(1).setnShininess(80).setkT(0d)),
+
+                    new Sphere( new Point(5 * i, 5, 3),3).setEmission(new Color(BLUE).reduce(2))
+                            .setMaterial(new Material().setkD(0.2).setkS(1).setnShininess(80).setkT(0d)),
+                    new Sphere(new Point(5 * i, -8, -8),3).setEmission(new Color(PINK).reduce(2))
+                            .setMaterial(new Material().setkD(0.2).setkS(1).setnShininess(80).setkT(0d)),
+
+                    new Polygon(new Point(5 * i - 4, -5, -11), new Point(5 * i - 4, -5, 5), new Point(5 * i + 4, -5, 5),
+                            new Point(5 * i + 4, -5, -11)).setEmission(new Color(250, 235, 215).reduce(2))
+                            .setMaterial(new Material().setkD(0.001).setkS(0.002).setnShininess(1).setkT(0.95)
+                                    .setBlurGlass(i == 4 ? 1 : 1000, 0.9 * (i + 15), 17))
+
+            );
+        }
+
+        scene.geometries.add(new Plane(new Point(1, 10, 1), new Point(2, 10, 1), new Point(5, 10, 0))
+                .setEmission(new Color(white).reduce(3))
+                .setMaterial(new Material().setkD(0.2).setkS(0).setnShininess(0).setkT(0d))
+
         );
 
-        // Roof
-        scene.geometries.add(
-                new Triangle(
-                        new Point(-50, 0, 0),
-                        new Point(50, 0, 0),
-                        new Point(0, 50, 0)
-                ).setEmission(new Color(255, 0, 0)) // Red color
-                        .setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(30).setkR(0.5))
-        );
+        // scene.lights.add(new PointLight(new Color(100, 100, 150), new Point(0, 6,
+        // 0)));
+        scene.lights.add(new DirectionalLight(new Color(white).reduce(1), new Vector(-0.4, 1, 0)));
+        scene.lights.add(new SpotLight(new Color(white).reduce(2), new Point(20.43303, -7.37104, 13.77329),
+                new Vector(-20.43, 7.37, -13.77)).setkL(0.6));
 
-        // Door
-        scene.geometries.add(
-                new Polygon(
-                        new Point(-10, -50, 0),
-                        new Point(10, -50, 0),
-                        new Point(10, 0, 0),
-                        new Point(-10, 0, 0)
-                ).setEmission(new Color(100, 50, 0)) // Dark brown color
-                        .setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(30).setkR(0.5))
-        );
+        ImageWriter imageWriter = new ImageWriter("blurryGlass2", 500, 500);
+        camera.setImageWriter(imageWriter) //
+                .setRayTracer(new SimpleRayTracer(scene)) //
+                .build() //
+                .renderImage()
+                .writeToImage();
 
-        // Windows
-        /**
-         scene.geometries.add(
-         new Polygon(
-         new Point(20, -20, 0),
-         new Point(40, -20, 0),
-         new Point(40, 20, 0),
-         new Point(20, 20, 0)
-         ).setEmission(new Color(30, 144, 255)) // Light blue color
-         .setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(30).setkR(0.5))
-         );
-         **/
-        // Sun
-        scene.geometries.add(
-                new Sphere(new Point(40, 20, -40), 30) //
-                        .setEmission(new Color(yellow)) //
-                        .setMaterial(new Material().setkD(0.7).setkS(0.1)
-                                .setnShininess(2).setkT(0.9))
-        );
-
-        // Ground plane for reflection
-        scene.geometries.add(
-                new Polygon(
-                        new Point(-100, -100, -50),
-                        new Point(100, -100, -50),
-                        new Point(100, 100, -50),
-                        new Point(-100, 100, -50)
-                ).setEmission(new Color(20, 20, 20)) // Dark gray color
-                        .setMaterial(new Material().setkR(0.7).setkT(0.3))
-        );
-
-        // Add light source
-        scene.lights.add(
-                new SpotLight(new Color(700, 400, 400), new Point(60, 50, 0), new Vector(0, 0, -1))
-                        .setkL(4E-5).setkQ(2E-7));
-
-        // Configure the camera and render the image
-        Camera camera = Camera.getBuilder()
-                .setLocation(new Point(0, 0, 100))
-                .setDirection(new Vector(0, 0, -1), new Vector(0, 1, 0))
-                .setVpDistance(100)
-                .setVpSize(200, 200)
-                .setImageWriter(new ImageWriter("houseWithSunReflectionAndShadow", 500, 500))
-                .setRayTracer(new SimpleRayTracer(scene))
-                .build();
-
-        camera.renderImage();
-        camera.writeToImage();
     }
 
+
+
+
+
 }
+/**
+ @Test
+ public void drawHouseWithSunReflectionAndShadow() {
+ Scene scene = new Scene("House with Sun Reflection and Shadow");
+
+ // House body
+ scene.geometries.add(
+ new Polygon(
+ new Point(-50, -50, 0),
+ new Point(50, -50, 0),
+ new Point(50, 0, 0),
+ new Point(-50, 0, 0)
+ ).setEmission(new Color(150, 75, 0)) // Brown color
+ .setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(30).setkR(0.5))
+ );
+
+ // Roof
+ scene.geometries.add(
+ new Triangle(
+ new Point(-50, 0, 0),
+ new Point(50, 0, 0),
+ new Point(0, 50, 0)
+ ).setEmission(new Color(255, 0, 0)) // Red color
+ .setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(30).setkR(0.5))
+ );
+
+ // Door
+ scene.geometries.add(
+ new Polygon(
+ new Point(-10, -50, 0),
+ new Point(10, -50, 0),
+ new Point(10, 0, 0),
+ new Point(-10, 0, 0)
+ ).setEmission(new Color(100, 50, 0)) // Dark brown color
+ .setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(30).setkR(0.5))
+ );
+
+ // Windows
+ /**
+ scene.geometries.add(
+ new Polygon(
+ new Point(20, -20, 0),
+ new Point(40, -20, 0),
+ new Point(40, 20, 0),
+ new Point(20, 20, 0)
+ ).setEmission(new Color(30, 144, 255)) // Light blue color
+ .setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(30).setkR(0.5))
+ );
+
+ // Sun
+ scene.geometries.add(
+ new Sphere(new Point(40, 20, -40), 30) //
+ .setEmission(new Color(yellow)) //
+ .setMaterial(new Material().setkD(0.7).setkS(0.1)
+ .setnShininess(2).setkT(0.9))
+ );
+
+ // Ground plane for reflection
+ scene.geometries.add(
+ new Polygon(
+ new Point(-100, -100, -50),
+ new Point(100, -100, -50),
+ new Point(100, 100, -50),
+ new Point(-100, 100, -50)
+ ).setEmission(new Color(20, 20, 20)) // Dark gray color
+ .setMaterial(new Material().setkR(0.7).setkT(0.3))
+ );
+
+ // Add light source
+ scene.lights.add(
+ new SpotLight(new Color(700, 400, 400), new Point(60, 50, 0), new Vector(0, 0, -1))
+ .setkL(4E-5).setkQ(2E-7));
+
+ // Configure the camera and render the image
+ Camera camera = Camera.getBuilder()
+ .setLocation(new Point(0, 0, 100))
+ .setDirection(new Vector(0, 0, -1), new Vector(0, 1, 0))
+ .setVpDistance(100)
+ .setVpSize(200, 200)
+ .setImageWriter(new ImageWriter("houseWithSunReflectionAndShadow", 500, 500))
+ .setRayTracer(new SimpleRayTracer(scene))
+ .build();
+
+ camera.renderImage();
+ camera.writeToImage();
+ }
+
+ */

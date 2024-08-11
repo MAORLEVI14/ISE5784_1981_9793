@@ -105,7 +105,7 @@ public class ShadowTests {
                 new Triangle(new Point(-150, -150, -115), new Point(-70, 70, -140), new Point(75, 75, -150)) //
                         .setMaterial(new Material().setkS(0.8).setnShininess(60)), //
                 new Sphere(new Point(0, 0, -11),30) //
-                        .setEmission(new Color(BLUE)) //
+                        .setEmission(new Color(blue)) //
                         .setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(30)) //
         );
         scene.setAmbientLight(new AmbientLight(new Color(WHITE), 0.15));

@@ -1,5 +1,4 @@
 package renderer;
-
 import geometries.Intersectable;
 import geometries.Plane;
 import geometries.Sphere;
@@ -9,11 +8,8 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 import scene.Scene;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class IntegrationTests {
     /**
      *Integration tests.
